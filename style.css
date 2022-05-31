@@ -1,0 +1,225 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+section {
+  padding: 7em 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.spacing > * + * {  /* this means if all elements of spacing that doesn't have a sibling element before it will have a margi-top of 2rem*/
+  margin-top: var(--spacer, 2rem)
+}
+
+.container {
+  width: 85%;
+  max-width: 65em;
+  margin: 0 auto;
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+}
+
+.split > * {
+  flex-basis: 30%;
+  min-width: 15em;
+}
+
+/*------------- Header ---------------*/
+
+.btn {
+  display: inline-block;  /*Without this, the button gets overflowed to the description*/
+  background-color: var(--color--accent, blue);
+  color: var(--color--text, white);
+  padding: 0.5em 1.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: 0.25em;
+  transition: transform 250ms ease-in-out, opacity 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.hero--title {
+  line-height: 1;
+  font-size: clamp(3rem, 5vw + 1rem, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hero {
+  color: white;
+  text-align: center;
+  padding: 10em 0;
+}
+
+@supports(background-blend-mode: multiply) {
+  .hero {
+    background-image: 
+    url(./img/shoe-red.jpg),
+    radial-gradient(#644, rgb(176, 37, 37));
+    background-blend-mode: multiply;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+/*------------- Header-End ---------------*/
+
+
+/*-------- Featured Products-Start -------- */
+ 
+.featured {
+  background: #eee;
+}
+
+.section--title {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem); /*this means - min 2.5rem, it will grow between 5vw to 1rem, max 4rem*/
+  line-height: 1;
+  color: #17353d;
+  margin-bottom: 5rem;
+}
+
+.featured--item {
+  text-decoration: none;
+  text-align: center;
+  color: #333;
+  line-height: 1.2;
+
+  display: block;
+  position: relative;
+  transform: scale(.85);
+  transition: transform 250ms ease-in-out;
+}
+
+.featured--item:hover,
+:focus { 
+  transform: scale(1)
+}
+
+.featured--item::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  padding: 75% 75% 0 0;
+  border-radius: 50%;
+  background-color: #2193b0;
+  z-index: -1;
+}
+
+.featured--details {
+  opacity: 0;
+  transition: opacity 250ms linear;
+}
+
+.featured--item:hover .featured--details,
+.featured--item:focus .features--details {
+  opacity: 1;
+}
+
+.price {
+  display: block;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+/*-------- Featured Products-End -------- */
+
+/*-------- Products-Start ------------ */
+
+.product {
+  /* background: radial-gradient(orange, red); */
+  padding: 3em;
+  border-radius: 1em;
+  margin-bottom: 5em;
+  text-align: center;
+}
+
+.ourproducts--image {
+  margin: -5em 0 0 0;
+}
+
+@media (min-width: 45em) {
+  .product {
+    text-align: left;
+    margin-bottom: 9em;
+  }
+
+  .ourproducts--image {
+    float: right;
+    width: 65%;
+    shape-outside: url(./img/shoe-1.png);
+    margin: 0 -5em 0 0 ;
+  }
+
+  .ourproducts--title {
+    margin: 0;
+  }
+
+  .shoe-cream .ourproducts--image {
+    float: left;
+    shape-outside: url(./img/shoe-2.png);
+    margin: 0 0 0 -5em;
+    shape-margin: 2em;
+
+  }
+}
+
+
+.shoe-red {
+  background: linear-gradient(to right, #f12711, #f5af19);
+}
+
+.shoe-cream {
+  background: linear-gradient(90deg, hsla(205, 46%, 30%, 1) 0%, hsla(260, 29%, 36%, 1) 100%);
+
+}
+
+.shoe-white {
+  background: radial-gradient(#6dd5ed, #2193b0, #006089);
+}
+
+.ourproducts--title {
+  font-size: clamp(3rem , 5vw + 1rem, 5.5rem);
+  text-transform: uppercase;
+  line-height: 1;
+  color: white;
+  text-shadow: 0 0 .2em rgba(#000, .2);
+}
+
+
+/*-------- Products-End ------------ */
